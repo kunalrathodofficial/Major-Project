@@ -18,9 +18,10 @@ const localStrategy = require("passport-local");
 const User = require("./models/user.js");
 
 
-// app.get("/", (req, res)=>{
-//     res.send("Hi , I am root");
-// });
+app.get("/", async (req, res)=>{
+     const allListings = await Listing.find({});
+    res.render("listings/index.ejs",{allListings});
+});
 
 const listingRouter = require("./routes/listings.js");
 const reviewRouter = require("./routes/review.js");
